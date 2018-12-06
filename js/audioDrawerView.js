@@ -1,14 +1,12 @@
-define(function(require) {
-
-    var Backbone = require('backbone');
-    var Adapt = require('coreJS/adapt');
+define([
+   'core/js/adapt'
+], function(Adapt) {
 
     var AudioDrawerView = Backbone.View.extend({
 
         className: "audio-drawer",
 
         initialize: function() {
-
             this.listenTo(Adapt, 'remove', this.remove);
             this.render();
         },
@@ -16,9 +14,7 @@ define(function(require) {
         events: {
             "click .item-narration":"toggleNarration",
             "click .item-effects":"toggleEffects",
-            "click .item-music":"toggleMusic",
-            "click .full-button":"setFullText",
-            "click .reduced-button":"setReducedText"
+            "click .item-music":"toggleMusic"
         },
 
         render: function() {
@@ -42,8 +38,6 @@ define(function(require) {
               this.checkMusic();
               this.numChannels ++;
             }
-
-            this.checkTextSize();
 
             _.defer(_.bind(this.postRender, this));
             return this;
@@ -113,18 +107,6 @@ define(function(require) {
             this.checkMusic();
         },
 
-        checkTextSize: function() {
-            if(Adapt.audio.textSize==0){
-                this.$('.text-description').html(Adapt.course.get('_audio')._reducedText.descriptionFull).a11y_text();
-                this.$('.full-button').hide();
-                this.$('.reduced-button').show();
-            } else {
-                this.$('.text-description').html(Adapt.course.get('_audio')._reducedText.descriptionReduced).a11y_text();
-                this.$('.reduced-button').hide();
-                this.$('.full-button').show();
-            }
-        },
-
         checkNarration: function() {
             if(Adapt.audio.audioClip[0].status==1){
                 this.$('.narration-description').html(Adapt.course.get('_audio')._channels._narration.descriptionOn).a11y_text();
@@ -159,22 +141,9 @@ define(function(require) {
                 this.$('.item-music').removeClass(Adapt.audio.iconOn);
                 this.$('.item-music').addClass(Adapt.audio.iconOff);
             }
-        },
-
-        setFullText: function(event) {
-            if (event) event.preventDefault();
-            // Set text to full
-            Adapt.trigger('audio:changeText', 0);
-            this.checkTextSize();
-        },
-
-        setReducedText: function(event) {
-            if (event) event.preventDefault();
-            // Set text to small
-            Adapt.trigger('audio:changeText', 1);
-            this.checkTextSize();
         }
+
     });
 
     return AudioDrawerView;
-})
+});

@@ -60,12 +60,12 @@
 
 // Ico moon font used for default audio icon
 @font-face {
-    font-family: 'icomoon';
-    src: url('fonts/icomoon.eot?');
-    src: url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-         url('fonts/icomoon.woff?') format('woff'),
-         url('fonts/icomoon.ttf?') format('truetype'),
-         url('fonts/icomoon.svg?1#fontawesome') format('svg');
+    font-family: 'audio';
+    src: url('fonts/audio.eot?');
+    src: url('fonts/audio.eot?#iefix') format('embedded-opentype'),
+         url('fonts/audio.woff?') format('woff'),
+         url('fonts/audio.ttf?') format('truetype'),
+         url('fonts/audio.svg?1#fontawesome') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -74,7 +74,7 @@
 .icon-audio-off,
 .icon-audio-play,
 .icon-audio-pause {
-    font-family: 'icomoon' !important;
+    font-family: 'audio' !important;
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -152,16 +152,25 @@
 }
 
 // Notify prompt styling
-.audio-prompt-image {
-    height: 130px;
-    padding-bottom: @component-padding;
-}
+.notify {
+  &.audio {
 
-.audio-notify-icon {
-    padding-left: 5px;
-    padding-right: 5px;
-    vertical-align: middle;
-    display: inline-block !important;
-    width: auto !important;
-    height: auto !important;
+    .notify-popup-title,
+    .notify-popup-body {
+      padding-right: 0px;
+      .dir-rtl & {
+        padding-right: inherit;
+        padding-left: 0px;
+      }
+    }
+
+    .audio-prompt-icon {
+      padding-bottom: @notify-title-padding-bottom;
+      &.icon {
+        color: @notify-text-color;
+        font-size: @icon-size * 3;
+      }
+    }
+
+  }
 }

@@ -1,11 +1,10 @@
 // To go in the course.json file
     "_audio": {
         "_isEnabled": true,
-        "_reducedTextisEnabled": true,
         "_autoplay": true,
         "_autoPlayOnce": true,
         "_showOnNavbar": true,
-        "_pauseStopAction": "stop", // options are "stop" or "pause"
+        "_pauseStopAction": "stop", // options are "stop" "pause"
         "_triggerPosition": 40,
         "title": "Audio",
         "description": "Click here to view the audio settings for this course.",
@@ -33,15 +32,6 @@
                 "descriptionOff": "Music is currently turned off. Select the icon below to turn the music on."
             }
         },
-        "_reducedText": {
-            "title": "Text setting",
-            "descriptionFull": "The text is set to full. Select the button below if you would like the text to summarise the audio.",
-            "descriptionReduced": "The text is set to reduced. Select the button below if you would like the text to match the audio exactly.",
-            "_buttons": {
-                "full": "Set to full text",
-                "reduced": "Set to reduced text"
-            }
-        },
         "_icons": {
             "_audioOn": "icon-audio-on audio-volume-medium",
             "_audioOff": "icon-audio-off audio-volume-mute",
@@ -50,12 +40,9 @@
         },
         "_prompt": {
             "_isEnabled": true,
-            "title": "Audio and text settings",
-            "titleNoReduced": "Audio setting",
-            "bodyAudioOn": "Audio is turned on by default in this module. You can turn the audio on or off at any time by selecting the <span class='icon-audio-on audio-notify-icon'></span> icon.<br><br>You can choose either full or reduced on-screen text. The full text option matches the audio exactly. The reduced text option summarises the audio.<br><br>Please select full or reduced text (you can change your preference at any time by selecting the <span class='icon-audio-on audio-notify-icon'></span> icon).",
-            "bodyAudioOff": "Audio is turned off by default in this module. You can turn the audio on or off at any time by selecting the <span class='icon-audio-on audio-notify-icon'></span> icon.<br><br>You can choose either full or reduced on-screen text. The full text option matches the audio exactly. The reduced text option summarises the audio.<br><br>Please select full or reduced text (you can change your preference at any time by selecting the <span class='icon-audio-on audio-notify-icon'></span> icon).",
-            "bodyNoReducedAudioOn": "Audio is turned on by default in this module. Please select Continue or Turn audio off (you can change your preference at any time by selecting the <span class='icon-audio-on audio-notify-icon'></span> icon).",
-            "bodyNoReducedAudioOff": "Audio is turned off by default in this module. Please select Continue or Turn audio on (you can change your preference at any time by selecting the <span class='icon-audio-on audio-notify-icon'></span> icon).",
+            "title": "Audio",
+            "bodyAudioOn": "Audio is turned on by default in this module. Please select Continue or Turn audio off (you can change your preference at any time by selecting the audio icon).",
+            "bodyAudioOff": "Audio is turned off by default in this module. Please select Continue or Turn audio on (you can change your preference at any time by selecting the audio icon).",
             "_buttons": {
                 "full": "Full",
                 "reduced": "Reduced",
@@ -70,11 +57,26 @@
     },
 
 
-// To go in article/block/component.json
+// To go in article/block.json
 
 "_audio": {
     "_isEnabled": true,
-    "_showControls": false,
+    "_showControls": true,
+    "_autoplay": true,
+    "_autoPlayOnce": true,
+    "_channel": 0, // channels represent the number of items defined in the course.json settings, by default there are 0, 1 and 2 available (3 _audioItems in the array)
+    "_location": "top-right", // pre-defined styles are "top-left", "top-right", "bottom-left", "bottom-right"
+    "_media": {
+        "desktop": "course/en/audio/***.mp3",
+        "mobile": "course/en/audio/***.mp3"
+    }
+},
+
+// To go in component.json
+
+"_audio": {
+    "_isEnabled": true,
+    "_showControls": true,
     "_autoplay": true,
     "_autoPlayOnce": true,
     "_channel": 0, // channels represent the number of items defined in the course.json settings, by default there are 0, 1 and 2 available (3 _audioItems in the array)
@@ -83,24 +85,16 @@
         "desktop": "course/en/audio/***.mp3",
         "mobile": "course/en/audio/***.mp3"
     },
-    "_reducedTextisEnabled": true,
-    "displayTitleReduced": "Reduced title",
-    "bodyReduced": "Reduced text",
     "_feedback": {
-        "_isEnabled": true,
+        "_isEnabled": false,
         "_correct": {
-            "correctReduced": "Reduced correct text.",
             "_correct": "course/en/audio/***.mp3"
         },
         "_incorrect": {
-            "notFinalReduced": "Reduced incorrect notFinal text.",
-            "finalReduced": "Reduced incorrect final text.",
             "_notFinal": "course/en/audio/***.mp3",
             "_final": "course/en/audio/***.mp3"
         },
         "_partlyCorrect": {
-            "notFinalReduced": "Reduced partly correct notFinal text.",
-            "finalReduced": "Reduced partly correct final text.",
             "_notFinal": "course/en/audio/***.mp3",
             "_final": "course/en/audio/***.mp3"
         },
@@ -124,6 +118,20 @@
             "_src": "course/en/audio/***.mp3"
           }
         ]
+    },
+    "_results": {
+        "_isEnabled": false,
+        "_assessmentId": "",
+        "_bands": [
+          {
+            "_score": 0,
+            "_src": "course/en/audio/***.mp3"
+          },
+          {
+            "_score": 100,
+            "_src": "course/en/audio/***.mp3"
+          }
+        ]
     }
 },
 
@@ -133,7 +141,6 @@
     "_isEnabled": true,
     "_showControls": true,
     "_autoplay": true,
-    "_autoPlayOnce": false,
     "_channel": 0,
     "_location": "top-right",
     "_media": {

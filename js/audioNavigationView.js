@@ -1,16 +1,18 @@
-define(function(require) {
+define([
+   'core/js/adapt'
+], function(Adapt) {
 
-    var Adapt = require('coreJS/adapt');
-    var Backbone = require('backbone');
-
-    var AudioToggleView = Backbone.View.extend({
+    var AudioNavigationView = Backbone.View.extend({
 
         className: 'audio-toggle',
 
         initialize: function() {
-            this.listenTo(Adapt, 'audio:updateAudioStatus', this.updateToggle);
-            this.listenTo(Adapt, 'accessibility:toggle', this.onAccessibilityToggle);
-            this.render();
+          this.listenTo(Adapt, {
+              "audio:updateAudioStatus": this.updateToggle,
+              "accessibility:toggle": this.onAccessibilityToggle
+          });
+
+          this.render();
         },
 
         events: {
@@ -19,7 +21,7 @@ define(function(require) {
 
         render: function() {
             var data = this.model.toJSON();
-            var template = Handlebars.templates["audioToggle"];
+            var template = Handlebars.templates["audioNavigation"];
 
             this.$el.html(template({
                 audioToggle:data
@@ -87,6 +89,6 @@ define(function(require) {
 
     });
 
-    return AudioToggleView;
+    return AudioNavigationView;
 
 });

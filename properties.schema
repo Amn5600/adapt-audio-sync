@@ -28,15 +28,6 @@
                   "validators": [],
                   "help": "Controls whether the Audio extension is enabled or disabled."
                 },
-                "_reducedTextisEnabled": {
-                  "type":"boolean",
-                  "required": false,
-                  "default": false,
-                  "title": "Reduced Text Is Enabled",
-                  "inputType": "Checkbox",
-                  "validators": [],
-                  "help": "Controls whether the reduced text functionality is enabled or disabled."
-                },
                 "_autoplay": {
                   "type":"boolean",
                   "required": false,
@@ -273,65 +264,6 @@
                     }
                   }
                 },
-                "_reducedText": {
-                  "type":"object",
-                  "required": true,
-                  "title": "Drawer Reduced Text",
-                  "properties":{
-                    "title": {
-                      "type": "string",
-                      "required": false,
-                      "default": "Text setting",
-                      "title": "Drawer Title",
-                      "inputType": "Text",
-                      "validators": [],
-                      "translatable": true
-                    },
-                    "descriptionFull": {
-                      "type": "string",
-                      "required": false,
-                      "default": "The text is set to full. Select the button below if you would like the text to summarise the audio.",
-                      "title": "Drawer Description - Full Text",
-                      "inputType": "Text",
-                      "validators": [],
-                      "translatable": true
-                    },
-                    "descriptionReduced": {
-                      "type": "string",
-                      "required": false,
-                      "default": "The text is set to reduced. Select the button below if you would like the text to match the audio exactly.",
-                      "title": "Drawer Description - Reduced Text",
-                      "inputType": "Text",
-                      "validators": [],
-                      "translatable": true
-                    },
-                    "_buttons": {
-                      "type":"object",
-                      "required": true,
-                      "title": "Drawer Buttons",
-                      "properties":{
-                        "full": {
-                          "type": "string",
-                          "required": false,
-                          "default": "Set to full text",
-                          "title": "Full Text Button",
-                          "inputType": "Text",
-                          "validators": [],
-                          "translatable": true
-                        },
-                        "reduced": {
-                          "type": "string",
-                          "required": false,
-                          "default": "Set to reduced text",
-                          "title": "Reduced Text Button",
-                          "inputType": "Text",
-                          "validators": [],
-                          "translatable": true
-                        }
-                      }
-                    }
-                  }
-                },
                 "_icons": {
                   "type":"object",
                   "required": true,
@@ -387,53 +319,26 @@
                     "title": {
                       "type": "string",
                       "required": false,
-                      "default": "Audio and text settings",
-                      "title": "Title if Reduced text is On",
-                      "inputType": "Text",
-                      "validators": [],
-                      "translatable": true
-                    },
-                    "titleNoReduced": {
-                      "type": "string",
-                      "required": false,
-                      "default": "Audio setting",
-                      "title": "Title if Reduced text is Off",
+                      "default": "Audio",
+                      "title": "Title",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "bodyAudioOn": {
                       "type": "string",
-                      "required": true,
-                      "default": "Audio is turned on by default in this module. You can turn the audio on or off at any time by selecting the audio icon.<br><br>You can choose either full or reduced on-screen text. The full text option matches the audio exactly. The reduced text option summarises the audio.<br><br>Please select full or reduced text (you can change your preference at any time by selecting the audio icon).",
-                      "title": "Prompt Message if Audio is On and Reduced text is On",
+                      "required": false,
+                      "default": "Audio is turned on by default in this module. Please select Continue or Turn audio off (you can change your preference at any time by selecting the audio icon).",
+                      "title": "Prompt Message if Audio is On",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "bodyAudioOff": {
                       "type": "string",
-                      "required": true,
-                      "default": "Audio is turned off by default in this module. You can turn the audio on or off at any time by selecting the audio icon.<br><br>You can choose either full or reduced on-screen text. The full text option matches the audio exactly. The reduced text option summarises the audio.<br><br>Please select full or reduced text (you can change your preference at any time by selecting the audio icon).",
-                      "title": "Prompt Message if Audio is Off and Reduced text is On",
-                      "inputType": "Text",
-                      "validators": [],
-                      "translatable": true
-                    },
-                    "bodyNoReducedAudioOn": {
-                      "type": "string",
-                      "required": false,
-                      "default": "Audio is turned on by default in this module. Please select Continue or Turn audio off (you can change your preference at any time by selecting the audio icon).",
-                      "title": "Prompt Message if Audio is On and Reduced text is Off",
-                      "inputType": "Text",
-                      "validators": [],
-                      "translatable": true
-                    },
-                    "bodyNoReducedAudioOff": {
-                      "type": "string",
                       "required": false,
                       "default": "Audio is turned off by default in this module. Please select Continue or Turn audio on (you can change your preference at any time by selecting the audio icon).",
-                      "title": "Prompt Message if Audio is Off and Reduced text is Off",
+                      "title": "Prompt Message if Audio is Off",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
@@ -443,26 +348,6 @@
                       "required":true,
                       "title": "Prompt Buttons",
                       "properties":{
-                        "full": {
-                          "type": "string",
-                          "required": true,
-                          "default": "Full",
-                          "title": "Full Text",
-                          "inputType": "Text",
-                          "validators": [],
-                          "help": "Enter the text for the button to select full text",
-                          "translatable": true
-                        },
-                        "reduced": {
-                          "type": "string",
-                          "required": true,
-                          "default": "Reduced",
-                          "title": "Reduced Text",
-                          "inputType": "Text",
-                          "validators": [],
-                          "help": "Enter the text for the button to select reduced text",
-                          "translatable": true
-                        },
                         "continue": {
                           "type": "string",
                           "required": true,
@@ -549,15 +434,6 @@
                   "inputType": "Checkbox",
                   "validators": [],
                   "help": "Autoplays the audio when on screen."
-                },
-                "_autoPlayOnce": {
-                  "type":"boolean",
-                  "required": false,
-                  "default": false,
-                  "title": "Autoplay Once Is Enabled",
-                  "inputType": "Checkbox",
-                  "validators": [],
-                  "help": "Sets whether audio should autoplay only once when on screen."
                 },
                 "_channel": {
                   "type": "number",
@@ -681,35 +557,6 @@
                       "help": "Audio for mobile size device."
                     }
                   }
-                },
-                "_reducedTextisEnabled": {
-                  "type":"boolean",
-                  "required": false,
-                  "default": false,
-                  "title": "Reduced Text Is Enabled",
-                  "inputType": "Checkbox",
-                  "validators": [],
-                  "help": "Controls whether the reduced text is enabled or disabled."
-                },
-                "displayTitleReduced": {
-                  "type": "string",
-                  "required": false,
-                  "default": "",
-                  "title": "Display Title Reduced",
-                  "inputType": "Text",
-                  "validators": [],
-                  "help": "Reduced text for the Article display title.",
-                  "translatable": true
-                },
-                "bodyReduced": {
-                  "type": "string",
-                  "required": false,
-                  "default": "",
-                  "title": "Body Reduced",
-                  "inputType": "TextArea",
-                  "validators": [],
-                  "help": "Reduced text for the Article body.",
-                  "translatable": true
                 }
               }
             }
@@ -800,35 +647,6 @@
                       "help": "Audio for mobile size device."
                     }
                   }
-                },
-                "_reducedTextisEnabled": {
-                  "type":"boolean",
-                  "required": false,
-                  "default": false,
-                  "title": "Reduced Text Is Enabled",
-                  "inputType": "Checkbox",
-                  "validators": [],
-                  "help": "Controls whether the reduced text is enabled or disabled."
-                },
-                "displayTitleReduced": {
-                  "type": "string",
-                  "required": false,
-                  "default": "",
-                  "title": "Display Title Reduced",
-                  "inputType": "Text",
-                  "validators": [],
-                  "help": "Reduced text for the Block display title.",
-                  "translatable": true
-                },
-                "bodyReduced": {
-                  "type": "string",
-                  "required": false,
-                  "default": "",
-                  "title": "Body Reduced",
-                  "inputType": "TextArea",
-                  "validators": [],
-                  "help": "Reduced text for the Block body.",
-                  "translatable": true
                 }
               }
             }
@@ -920,35 +738,6 @@
                     }
                   }
                 },
-                "_reducedTextisEnabled": {
-                  "type":"boolean",
-                  "required": false,
-                  "default": false,
-                  "title": "Reduced Text Is Enabled",
-                  "inputType": "Checkbox",
-                  "validators": [],
-                  "help": "Controls whether the reduced text is enabled or disabled."
-                },
-                "displayTitleReduced": {
-                  "type": "string",
-                  "required": false,
-                  "default": "",
-                  "title": "Display Title Reduced",
-                  "inputType": "Text",
-                  "validators": [],
-                  "help": "Reduced text for the Component display title.",
-                  "translatable": true
-                },
-                "bodyReduced": {
-                  "type": "string",
-                  "required": false,
-                  "default": "",
-                  "title": "Body Reduced",
-                  "inputType": "TextArea",
-                  "validators": [],
-                  "help": "Reduced text for the Component body.",
-                  "translatable": true
-                },
                 "_feedback": {
                   "type": "object",
                   "required": false,
@@ -966,16 +755,6 @@
                       "type":"object",
                       "required": false,
                       "properties":{
-                        "correctReduced": {
-                          "type":"string",
-                          "required": false,
-                          "default": "",
-                          "title": "Correct - Reduced Text",
-                          "inputType": "TextArea",
-                          "validators": [],
-                          "help": "Correct feedback for this question when reduced text is shown.",
-                          "translatable": true
-                        },
                         "_correct": {
                           "type": "string",
                           "required": false,
@@ -991,26 +770,6 @@
                       "type":"object",
                       "required":false,
                       "properties":{
-                        "notFinalReduced": {
-                          "type":"string",
-                          "required": false,
-                          "default": "",
-                          "title": "Incorrect Not Final - Reduced Text",
-                          "inputType": "TextArea",
-                          "validators": [],
-                          "help": "Incorrect feedback for any attempt apart from the last attempt when reduced text is shown.",
-                          "translatable": true
-                        },
-                        "finalReduced": {
-                          "type":"string",
-                          "required": true,
-                          "default": "",
-                          "title": "Incorrect Final - Reduced Text",
-                          "inputType": "TextArea",
-                          "validators": [],
-                          "help": "Incorrect feedback for the final attempt when reduced text is shown.",
-                          "translatable": true
-                        },
                         "_notFinal": {
                           "type": "string",
                           "required": false,
@@ -1035,26 +794,6 @@
                       "type":"object",
                       "required":false,
                       "properties":{
-                        "notFinalReduced": {
-                          "type":"string",
-                          "required": false,
-                          "default": "",
-                          "title": "Partly Correct Not Final - Reduced Text",
-                          "inputType": "TextArea",
-                          "validators": [],
-                          "help": "Partly correct feedback for any attempt apart from the last attempt when reduced text is shown.",
-                          "translatable": true
-                        },
-                        "finalReduced": {
-                          "type":"string",
-                          "required": false,
-                          "default": "",
-                          "title": "Partly Correct Final - Reduced Text",
-                          "inputType": "TextArea",
-                          "validators": [],
-                          "help": "Partly correct feedback for the final attempt when reduced text is shown.",
-                          "translatable": true
-                        },
                         "_notFinal": {
                           "type": "string",
                           "required": false,
@@ -1134,6 +873,57 @@
                             "inputType": "Asset:audio",
                             "validators": [],
                             "help": "Optional audio for the specific option selected."
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "_results": {
+                  "type": "object",
+                  "required": false,
+                  "legend": "Results",
+                  "properties": {
+                    "_isEnabled": {
+                      "type":"boolean",
+                      "required": false,
+                      "title": "Is Enabled",
+                      "inputType": "Checkbox",
+                      "validators": [],
+                      "help": "Turns results audio on and off for the component."
+                    },
+                    "_assessmentId": {
+                      "type": "string",
+                      "required": true,
+                      "default": "",
+                      "title": "Assessment Name",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "This is the unique name of the assessment for which results should be displayed."
+                    },
+                    "_bands": {
+                      "type": "array",
+                      "required": true,
+                      "title": "Bands",
+                      "items": {
+                        "type": "object",
+                        "required": true,
+                        "properties": {
+                          "_score": {
+                            "type": "number",
+                            "required": false,
+                            "title": "Score",
+                            "inputType": "Number",
+                            "validators": ["number"],
+                            "help": "Enter a value representing the raw score or percentage for the start of the range."
+                          },
+                          "_src": {
+                            "type": "string",
+                            "required": true,
+                            "default": "",
+                            "title": "Audio Asset",
+                            "inputType": "Asset:audio",
+                            "validators": []
                           }
                         }
                       }

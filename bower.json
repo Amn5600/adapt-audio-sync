@@ -1,7 +1,9 @@
 {
   "name": "adapt-audio",
+ 
   "version": "5.0.0",
   "framework": ">=5",
+ 
   "homepage": "https://github.com/deltanet/adapt-audio",
   "issues": "https://github.com/deltanet/adapt-audio/issues",
   "displayName" : "Audio",

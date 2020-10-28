@@ -179,7 +179,7 @@ define([
           // Effects audio
           if (this.audioEffectsEnabled) {
             this.audioEffectsFile = this.model.get('_audio')._feedback._soundEffect._partlyCorrect;
-          }
+           }
           // Reduced text
           if (this.model.get('_audio')._reducedTextisEnabled && Adapt.audio.textSize == 1) {
             $('.notify').find('.notify-popup__body-inner').html(this.model.get('_audio')._feedback._partlyCorrect.finalReduced);

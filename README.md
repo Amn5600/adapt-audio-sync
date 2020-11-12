@@ -233,6 +233,37 @@ The **_audio** attribute at Article, Block and Component level contains values f
 
 >>>**_src** (string): File name (including path) of the mp3 which is played when option specific feedback is shown. Path should be relative to the *src* folder.  
 
+## How to add audio syncing attributes.
+Wrap your each paragraph/html elements with following ** class="anim" data-dur="1" data-fx="-50" data-s="0.5" ** attributes.
+>**class = anim** : **anim** is target class to sync elements.
+>**data-dur** : this will define animation duration.
+>**data-fx** : animation start **from x** position to its default position or data-tx position.
+>**data-fy** : animation start **from y** position to its default position or data-ty position.
+>**data-tx** : animation start **to x** position to its default position.
+>**data-ty** : animation start **to y** position  to its default position.
+>**data-s** : animation start **time** sync with audio.
+
+##Modyfy Auhering tool
+Adapt authoring tool strip all data attributes by default to prevent this behavior we have to add a line 
+```javascript
+		extraAllowedContent: '*[*]{*}(*)',
+        toolbar: [
+          { name: 'document', groups: ['mode', 'document', 'doctools'], items: ['Source', '-', 'ShowBlocks'] },
+          { name: 'clipboard', groups: ['clipboard', 'undo'], items: ['PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
+          { name: 'editing', groups: ['find', 'selection', 'spellchecker'], items: ['Find', 'Replace', '-', 'SelectAll'] },
+          { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi'], items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv'] },
+          { name: 'direction', items: ['BidiLtr', 'BidiRtl'] },
+
+```
+  in the **"adapt_authoring_tool\frontend\src\modules\scaffold\backboneFormsOverrides.js"**
+
+## This is prototype and not final version enjoy :)
+
+
+
+
+
+
 <div float align=right><a href="#top">Back to Top</a></div>
 
 ----------------------------

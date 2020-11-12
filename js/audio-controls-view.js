@@ -1,6 +1,7 @@
 define([
-  'core/js/adapt'
-], function (Adapt) {
+  'core/js/adapt',
+  '../libraries/gsap.min'
+], function (Adapt,GSAP) {
 
   var AudioControlsView = Backbone.View.extend({
 
@@ -32,7 +33,7 @@ define([
       this.pausedTime = 0;
       this.onscreenTriggered = false;
       this.popupIsOpen = false;
-
+      
       this.render();
     },
 
@@ -352,6 +353,8 @@ define([
 
       Adapt.audio.audioClip[this.audioChannel].onscreenID = this.elementId;
       Adapt.audio.audioClip[this.audioChannel].playingID = Adapt.audio.audioClip[this.audioChannel].newID;
+       //this.timeline(Adapt.audio.audioClip[this.audioChannel].playingID);
+       this.playTimeline(Adapt.audio.audioClip[this.audioChannel].playingID);
       Adapt.audio.audioClip[this.audioChannel].isPlaying = true;
     },
 
@@ -366,8 +369,49 @@ define([
       } else {
         Adapt.trigger('audio:pauseAudio', this.audioChannel);
       }
+      this.pausedTimeline(Adapt.audio.audioClip[this.audioChannel].playingID);
       this.$('.audio__controls').attr('aria-label', $.a11y_normalize(Adapt.audio.playAriaLabel));
     },
+
+       createTimeline: function(id) {
+            window.tl = window.tl || {};
+            if (window.tl[id] === undefined) {
+                window.tl[id] = new TimelineMax({ paused: true });
+                //  this.tl[id].duration(duration);
+                $('.' + id).each(function() {
+                    if ($(this).find('.anim').length) {
+                        $(this).find('.anim').each(function() {
+                            let dur = Number($(this).attr('data-dur')) || 0;
+                            let tx = Number($(this).attr('data-tx')) || 0;
+                            let ty = Number($(this).attr('data-ty')) || 0;
+                            let fx = Number($(this).attr('data-fx')) || 0;
+                            let fy = Number($(this).attr('data-fy')) || 0;
+                            let s = Number($(this).attr('data-s')) || 0;
+                            window.tl[id].fromTo($(this), dur, { opacity: 0, x: fx, y: fy }, { opacity: 1, x: tx, y: ty }, s);
+                        });
+                    };
+                });
+            } else {
+                window.tl[id].restart()
+            }
+        },
+        playTimeline: function(id) {
+          console.log('playTimeline', id);
+          if(window.tl){
+            if(window.tl[id]){
+                 window.tl[id].progress(0).play()
+            }else{
+              this.createTimeline(id)
+            }
+          }
+        },
+        pausedTimeline: function(id) {
+           
+            if(window.tl[id]) window.tl[id].paused(true).progress(1)   
+        },
+        restartTimeline: function() {
+            this.tl.restart()
+        },
 
     updateToggle: function () {
       if (Adapt.audio.audioClip[this.audioChannel].status == 1 && this.model.get('_audio')._showControls == true) {
